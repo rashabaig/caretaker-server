@@ -1,4 +1,5 @@
 const mongoose = require('../../connection');
+
 var SugarLevel = new mongoose.Schema({
     beforeMeal: {
         sugarLevel: Number,
