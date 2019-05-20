@@ -29,4 +29,14 @@ router.put('/update/:dailyNoteID', (req, res) => {
 			console.log(err);
 		});
 });
+//To Delete A Note
+router.delete('/:dailyNoteID', (req, res) => {
+	DailyNoteModel.findOneAndDelete({ _id: req.params.dailyNoteID })
+		.then(() => {
+			return res.sendStatus(200);
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+});
 module.exports = router;

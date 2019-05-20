@@ -30,4 +30,24 @@ router.put('/update/:doctorID', (req, res) => {
 			console.log(err);
 		});
 });
+
+// To Find Doctor By Name -- works
+router.get('/:doctorName', (req, res) => {
+	let doctorname = req.params.doctorName;
+	console.log(doctorname);
+	DoctorModel.findOne({ doctorName: doctorname }).then((docter) => {
+		res.json(doctor);
+	});
+});
+//To Delete A Doctor
+router.delete('/:doctorID', (req, res) => {
+	DoctorModel.findOneAndDelete({ _id: req.params.doctorID })
+		.then(() => {
+			return res.sendStatus(200);
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+});
+
 module.exports = router;
