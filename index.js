@@ -3,7 +3,6 @@ const app = express();
 const parser = require('body-parser');
 const userController = require('./controllers/userController');
 const sugarlevelController = require('./controllers/sugarlevelController');
-<<<<<<< HEAD
 const appointmentController = require('./controllers/appointmentController');
 const medicationController = require('./controllers/medicationController');
 const doctorController = require('./controllers/doctorController');
