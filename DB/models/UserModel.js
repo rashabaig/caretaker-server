@@ -40,18 +40,24 @@ const UserModel = new mongoose.Schema({
 			ref: 'DailyNoteModel'
 		}
 	],
-	sugarLevel:[{
-        type: Schema.Types.ObjectId,
-        ref: "SugarLevel"
-    }],
-    bloodPressure: [{
-        type: Schema.Types.ObjectId,
-        ref: "BloodPressure"
-    }],
-    weight: [{
-        type: Schema.Types.ObjectId,
-        ref: "Weight"
-    }]
+	sugarLevel: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'SugarLevel'
+		}
+	],
+	bloodPressure: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'BloodPressure'
+		}
+	],
+	weight: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'Weight'
+		}
+	]
 });
 
 module.exports = mongoose.model('User', UserModel);
