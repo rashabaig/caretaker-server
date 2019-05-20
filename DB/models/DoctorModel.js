@@ -12,14 +12,14 @@ const DoctorModel = new mongoose.Schema({
 	doctorPhone: String,
 	medications: [
 		{
-			type: Schema.Types.ObjectId,
-			ref: 'MedicationModel'
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'Medication'
 		}
 	],
 	appointments: [
 		{
-			type: Schema.Types.ObjectId,
-			ref: 'AppointmentModel'
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'Appointment'
 		}
 	]
 });

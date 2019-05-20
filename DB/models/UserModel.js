@@ -1,7 +1,7 @@
 const mongoose = require('../../connection');
 
 const UserModel = new mongoose.Schema({
-	username: String,
+	userName: String,
 	password: String,
 	age: Number,
 	name: {
@@ -19,25 +19,25 @@ const UserModel = new mongoose.Schema({
 	doctors: [
 		{
 			type: mongoose.Schema.Types.ObjectId,
-			ref: 'DoctorModel'
+			ref: 'Doctor'
 		}
 	],
 	appointments: [
 		{
 			type: mongoose.Schema.Types.ObjectId,
-			ref: 'AppointmentModel'
+			ref: 'Appointment'
 		}
 	],
 	medications: [
 		{
 			type: mongoose.Schema.Types.ObjectId,
-			ref: 'MedicationModel'
+			ref: 'Medication'
 		}
 	],
 	notes: [
 		{
 			type: mongoose.Schema.Types.ObjectId,
-			ref: 'DailyNoteModel'
+			ref: 'DailyNote'
 		}
 	],
 	sugarLevel: [

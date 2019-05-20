@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const AppointmentModel = require('../DB/models/AppointmentModel');
+const DailyNoteModel = require('../DB/models/DailyNoteModel');
 const UserModel = require('../DB/models/UserModel');
 
-//To Create A New Appointment -- Works
+//To Create A New Note -- Works
 router.put('/new/:id', (req, res) => {
 	UserModel.findOneAndUpdate({ _id: req.params.id })
 		.then((user) => {
 			console.log(user);
-			AppointmentModel.create(req.body).then((appointment) => {
-				user.appointments.push(appointment._id);
+			DailyNoteModel.create(req.body).then((note) => {
+				user.notes.push(note._id);
 				user.save();
 				console.log(user);
 			});
@@ -19,17 +19,14 @@ router.put('/new/:id', (req, res) => {
 			console.log(err);
 		});
 });
-
-//To Update An Appointment
-
-router.put('/update/:appointmentID', (req, res) => {
-	AppointmentModel.findOneAndUpdate({ _id: req.params.appointmentID }, { $set: req.body })
-		.then((appointment) => {
-			res.json(appointment);
+//To Update A Note
+router.put('/update/:dailyNoteID', (req, res) => {
+	DailyNoteModel.findOneAndUpdate({ _id: req.params.dailyNoteID }, { $set: req.body })
+		.then((note) => {
+			res.json(note);
 		})
 		.catch((err) => {
 			console.log(err);
 		});
 });
-
 module.exports = router;
