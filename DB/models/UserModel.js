@@ -39,6 +39,12 @@ const UserModel = new mongoose.Schema({
 			type: Schema.Types.ObjectId,
 			ref: 'MedicationModel'
 		}
+	],
+	notes: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: 'DailyNoteModel'
+		}
 	]
 });
 
