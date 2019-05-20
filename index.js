@@ -1,14 +1,15 @@
 const express = require('express');
 const app = express();
 const parser = require('body-parser');
-//require controllers
+const userController = require('./controllers/userController');
+
 const cors = require('cors');
 
 app.use(parser.json());
 
 app.use(cors());
 
-// app.use controllers
+app.use('/', userController);
 
 app.set('port', process.env.PORT || 3001);
 

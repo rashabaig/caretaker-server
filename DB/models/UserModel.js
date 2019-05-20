@@ -1,15 +1,8 @@
 const mongoose = require('../../connection');
 
 const UserModel = new mongoose.Schema({
-	username: {
-		type: String,
-		required: true,
-		unique: true
-	},
-	password: {
-		type: String,
-		required: true
-	},
+	username: String,
+	password: String,
 	age: Number,
 	name: {
 		firstName: String,
@@ -18,31 +11,31 @@ const UserModel = new mongoose.Schema({
 	emailAddress: String,
 	metrics: [
 		{
-			type: Schema.Types.ObjectId,
+			type: mongoose.Schema.Types.ObjectId,
 			ref: 'MetricsModel'
 		}
 	],
 	doctors: [
 		{
-			type: Schema.Types.ObjectId,
+			type: mongoose.Schema.Types.ObjectId,
 			ref: 'DoctorModel'
 		}
 	],
 	appointments: [
 		{
-			type: Schema.Types.ObjectId,
+			type: mongoose.Schema.Types.ObjectId,
 			ref: 'AppointmentModel'
 		}
 	],
 	medications: [
 		{
-			type: Schema.Types.ObjectId,
+			type: mongoose.Schema.Types.ObjectId,
 			ref: 'MedicationModel'
 		}
 	],
 	notes: [
 		{
-			type: Schema.Types.ObjectId,
+			type: mongoose.Schema.Types.ObjectId,
 			ref: 'DailyNoteModel'
 		}
 	]
