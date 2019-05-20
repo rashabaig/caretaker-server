@@ -9,9 +9,19 @@ const DoctorModel = new mongoose.Schema({
 		state: String,
 		zipcode: Number
 	},
-	doctorPhone: [ String ],
-	medications: [ MedicationModel ],
-	appointments: [ AppointmentModel ]
+	doctorPhone: String,
+	medications: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: 'MedicationModel'
+		}
+	],
+	appointments: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: 'AppointmentModel'
+		}
+	]
 });
 
 module.exports = mongoose.model('Doctor', DoctorModel);
