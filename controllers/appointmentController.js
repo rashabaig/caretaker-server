@@ -32,4 +32,14 @@ router.put('/update/:appointmentID', (req, res) => {
 		});
 });
 
+//To Delete An Appointment
+router.delete('/:appointmentID', (req, res) => {
+	AppointmentModel.findOneAndDelete({ _id: req.params.appointmentID })
+		.then(() => {
+			return res.sendStatus(200);
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+});
 module.exports = router;

@@ -19,7 +19,7 @@ router.put('/new/:id', (req, res) => {
 			console.log(err);
 		});
 });
-//To Update A Medication
+//To Update A Medication -- works
 router.put('/update/:medicationID', (req, res) => {
 	MedicationModel.findOneAndUpdate({ _id: req.params.medicationID }, { $set: req.body })
 		.then((medication) => {
@@ -30,13 +30,24 @@ router.put('/update/:medicationID', (req, res) => {
 		});
 });
 
-//To Find medication By ID
-// router.get('/:medicationName', (req, res) => {
-// 	let medicationId = req.params.userID;
-// 	console.log(userID);
-// 	MedicationModel.findOne({ medicationName: medicationName }).then((user) => {
-// 		res.json(user);
-// 	});
-// });
+// To Find Medication By Name -- works
+router.get('/:medicationName', (req, res) => {
+	let medicationname = req.params.medicationName;
+	console.log(medicationname);
+	MedicationModel.findOne({ medicationName: medicationname }).then((medication) => {
+		res.json(medication);
+	});
+});
+
+//To Delete A Medication
+router.delete('/:medicationID', (req, res) => {
+	MedicationModel.findOneAndDelete({ _id: req.params.medicationID })
+		.then(() => {
+			return res.sendStatus(200);
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+});
 
 module.exports = router;
