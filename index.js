@@ -7,6 +7,7 @@ const appointmentController = require('./controllers/appointmentController');
 const medicationController = require('./controllers/medicationController');
 const doctorController = require('./controllers/doctorController');
 const dailyNoteController = require('./controllers/dailyNoteController');
+const bloodpressureController = require('./controllers/BloodPressureController')
 
 const cors = require('cors');
 
@@ -20,6 +21,7 @@ app.use('/appointment', appointmentController);
 app.use('/medication', medicationController);
 app.use('/doctor', doctorController);
 app.use('/note', dailyNoteController);
+app.use('/bloodpressure', bloodpressureController);
 
 app.set('port', process.env.PORT || 3001);
 
