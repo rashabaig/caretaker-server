@@ -7,7 +7,7 @@ router.put('/:UserID', (req, res) => {
 	UserModel.findOneAndUpdate({ _id: req.params.UserID })
 		.then((user) => {
 			console.log(user);
-			BloodPressureModel.create(req.body).then((bloodPressureNew) => {
+			BloodPressureModel.create(req.body.data).then((bloodPressureNew) => {
 				user.bloodPressure.push(bloodPressureNew._id);
 				bloodPressureNew.save();
 				user.save()
