@@ -19,7 +19,20 @@ router.put('/new/:userID', (req, res) => {
 			console.log(err);
 		});
 });
-
+router.get('/all/:UserID', (req, res) => {
+	UserModel.find({ _id: req.params.UserID })
+		.then((user) => {
+			console.log(user[0].medications);
+			DoctorModel.find({
+				_id: { $in: user[0].medications }
+			}).then((obj) => {
+				return res.json(obj);
+			});
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+});
 //To Update A Doctor
 router.put('/update/:doctorID', (req, res) => {
 	DoctorModel.findOneAndUpdate({ _id: req.params.doctorID }, { $set: req.body })

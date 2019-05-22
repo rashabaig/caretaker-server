@@ -4,10 +4,8 @@ const UserModel = new mongoose.Schema({
 	userName: String,
 	password: String,
 	age: Number,
-	name: {
-		firstName: String,
-		lastName: String
-	},
+	firstName: String,
+	lastName: String,
 	emailAddress: String,
 	// metrics: [
 	// 	{
