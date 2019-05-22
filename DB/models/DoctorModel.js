@@ -3,12 +3,10 @@ const mongoose = require('../../connection');
 const DoctorModel = new mongoose.Schema({
 	doctorName: String,
 	doctorSpecialty: [ String ],
-	doctorAddress: {
-		street: String,
-		city: String,
-		state: String,
-		zipcode: Number
-	},
+	street: String,
+	city: String,
+	state: String,
+	zipcode: Number,
 	doctorPhone: String,
 	medications: [
 		{

@@ -10,31 +10,31 @@ router.put('/new/:userID', (req, res) => {
 			console.log(user);
 			DoctorModel.create(req.body).then((doctor) => {
 				user.doctors.push(doctor._id);
-				doctor.save()
+				doctor.save();
 				user.save();
 				console.log(user);
 				return res.json(user);
 			});
-			
 		})
 		.catch((err) => {
 			console.log(err);
 		});
 });
-router.get('/all/:UserID', (req, res) => {
-	UserModel.find({ _id: req.params.UserID })
-		.then((user) => {
-			console.log(user[0].medications);
-			DoctorModel.find({
-				_id: { $in: user[0].medications }
-			}).then((obj) => {
-				return res.json(obj);
-			});
-		})
-		.catch((err) => {
-			console.log(err);
-		});
-});
+//To get all doctors for one user
+// router.get('/all/:UserID', (req, res) => {
+// 	UserModel.find({ _id: req.params.UserID })
+// 		.then((user) => {
+// 			console.log(user[0].doctors);
+// 			DoctorModel.find({
+// 				_id: { $in: user[0].doctors }
+// 			}).then((obj) => {
+// 				return res.json(obj);
+// 			});
+// 		})
+// 		.catch((err) => {
+// 			console.log(err);
+// 		});
+// });
 //To Update A Doctor
 router.put('/update/:doctorID', (req, res) => {
 	DoctorModel.findOneAndUpdate({ _id: req.params.doctorID }, { $set: req.body })
@@ -68,14 +68,13 @@ router.delete('/:doctorID', (req, res) => {
 router.get('/all/:UserID', (req, res) => {
 	UserModel.find({ _id: req.params.UserID })
 		.then((user) => {
-			console.log(user[0].doctors)
+			console.log(user[0].doctors);
 			DoctorModel.find({
-				'_id': { $in: user[0].doctors}
-			}).then(obj =>{
-				
-				return res.json(obj)
-			})
-			})
+				_id: { $in: user[0].doctors }
+			}).then((obj) => {
+				return res.json(obj);
+			});
+		})
 		.catch((err) => {
 			console.log(err);
 		});
