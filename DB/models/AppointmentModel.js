@@ -2,8 +2,8 @@ const mongoose = require('../../connection');
 const AppointmentModel = new mongoose.Schema({
 	doctorName: String,
 	purpose: String,
-	date: Date,
-	time: Date
+	date: String,
+	time: String
 });
 
 module.exports = mongoose.model('Appointment', AppointmentModel);

@@ -11,9 +11,11 @@ router.put('/new/:id', (req, res) => {
 			AppointmentModel.create(req.body.data).then((appointment) => {
 				user.appointments.push(appointment._id);
 				user.save();
+				appointment.save()
 				console.log(user);
+				return res.json(user);
 			});
-			return res.json(user);
+			
 		})
 		.catch((err) => {
 			console.log(err);
@@ -38,6 +40,22 @@ router.delete('/:appointmentID', (req, res) => {
 		.then(() => {
 			return res.sendStatus(200);
 		})
+		.catch((err) => {
+			console.log(err);
+		});
+});
+// return all appointments for user
+router.get('/:UserID', (req, res) => {
+	UserModel.find({ _id: req.params.UserID })
+		.then((user) => {
+			console.log(user[0].appointments)
+			AppointmentModel.find({
+				'_id': { $in: user[0].appointments}
+			}).then(obj =>{
+				console.log(obj)
+				return res.json(obj)
+			})
+			})
 		.catch((err) => {
 			console.log(err);
 		});
