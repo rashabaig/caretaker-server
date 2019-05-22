@@ -8,7 +8,7 @@ router.put('/new/:id', (req, res) => {
 	UserModel.findOneAndUpdate({ _id: req.params.id })
 		.then((user) => {
 			console.log(user);
-			AppointmentModel.create(req.body).then((appointment) => {
+			AppointmentModel.create(req.body.data).then((appointment) => {
 				user.appointments.push(appointment._id);
 				user.save();
 				console.log(user);
