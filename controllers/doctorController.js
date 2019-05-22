@@ -19,12 +19,13 @@ router.put('/new/:userID', (req, res) => {
 			console.log(err);
 		});
 });
+//To get all doctors for one user
 router.get('/all/:UserID', (req, res) => {
 	UserModel.find({ _id: req.params.UserID })
 		.then((user) => {
-			console.log(user[0].medications);
+			console.log(user[0].doctors);
 			DoctorModel.find({
-				_id: { $in: user[0].medications }
+				_id: { $in: user[0].doctors }
 			}).then((obj) => {
 				return res.json(obj);
 			});
