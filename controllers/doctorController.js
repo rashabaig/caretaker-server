@@ -10,10 +10,12 @@ router.put('/new/:userID', (req, res) => {
 			console.log(user);
 			DoctorModel.create(req.body).then((doctor) => {
 				user.doctors.push(doctor._id);
+				doctor.save()
 				user.save();
 				console.log(user);
+				return res.json(user);
 			});
-			return res.json(user);
+			
 		})
 		.catch((err) => {
 			console.log(err);
@@ -58,6 +60,22 @@ router.delete('/:doctorID', (req, res) => {
 		.then(() => {
 			return res.sendStatus(200);
 		})
+		.catch((err) => {
+			console.log(err);
+		});
+});
+// get add doctors that user has
+router.get('/all/:UserID', (req, res) => {
+	UserModel.find({ _id: req.params.UserID })
+		.then((user) => {
+			console.log(user[0].doctors)
+			DoctorModel.find({
+				'_id': { $in: user[0].doctors}
+			}).then(obj =>{
+				
+				return res.json(obj)
+			})
+			})
 		.catch((err) => {
 			console.log(err);
 		});
