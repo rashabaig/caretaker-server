@@ -7,12 +7,12 @@ const UserModel = require('../DB/models/UserModel');
 router.put('/new/:id', (req, res) => {
 	UserModel.findOneAndUpdate({ _id: req.params.id })
 		.then((user) => {
-			console.log(user);
+
 			AppointmentModel.create(req.body.data).then((appointment) => {
 				user.appointments.push(appointment._id);
 				user.save();
 				appointment.save()
-				console.log(user);
+
 				return res.json(user);
 			});
 			
@@ -36,23 +36,24 @@ router.put('/update/:appointmentID', (req, res) => {
 
 //To Delete An Appointment
 router.delete('/:appointmentID', (req, res) => {
+	console.log("------------ params ----------- ", req.params)
 	AppointmentModel.findOneAndDelete({ _id: req.params.appointmentID })
-		.then(() => {
-			return res.sendStatus(200);
-		})
-		.catch((err) => {
-			console.log(err);
-		});
+	.then(() => {
+		return res.sendStatus(200);
+	})
+	.catch((err) => {
+		console.log(err);
+	});
 });
 // return all appointments for user
 router.get('/:UserID', (req, res) => {
 	UserModel.find({ _id: req.params.UserID })
 		.then((user) => {
-			console.log(user[0].appointments)
+
 			AppointmentModel.find({
 				'_id': { $in: user[0].appointments}
 			}).then(obj =>{
-				console.log(obj)
+
 				return res.json(obj)
 			})
 			})
