@@ -3,7 +3,7 @@ const router = express.Router();
 const UserModel = require('../DB/models/UserModel');
 
 //To Create New User - works
-router.post('/', (req, res) => {
+router.post('/newUser', (req, res) => {
 	let newUser = req.body;
 	UserModel.create(newUser).then((newUser) => {
 		res.json(newUser);

@@ -9,8 +9,8 @@ const MedicationModel = new mongoose.Schema({
 	],
 	purpose: [ String ],
 	dosage: String,
-	startDate: Date,
-	endDate: Date
+	startDate: String,
+	endDate: String
 });
 
 module.exports = mongoose.model('Medication', MedicationModel);

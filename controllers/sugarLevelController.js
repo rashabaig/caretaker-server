@@ -9,10 +9,10 @@ router.put('/:UserID', (req, res) => {
 			console.log(req.body);
 			SugarLevelModel.create(req.body).then((sugar) => {
 				user.sugarLevel.push(sugar._id);
-                user.save();
-                sugar.save();
-                // console.log(user);
-                return res.sendStatus(200);
+				user.save();
+				sugar.save();
+				// console.log(user);
+				return res.sendStatus(200);
 			});
 		})
 		.catch((err) => {
@@ -33,12 +33,29 @@ router.delete('/:sugarLevelID', (req, res) => {
 
 // update data in sugarlevel -- works
 router.put('/update/:sugarLevelID', (req, res) => {
-	SugarLevelModel.findOneAndUpdate({ _id: req.params.sugarLevelID },{$set: req.body})
-		.then(sugarLevel => {res.sendStatus(200)})
+	SugarLevelModel.findOneAndUpdate({ _id: req.params.sugarLevelID }, { $set: req.body })
+		.then((sugarLevel) => {
+			res.sendStatus(200);
+		})
 		.catch((err) => {
 			console.log(err);
 		});
 });
 
+// To find all blood sugar -- works
+router.get('/:UserID', (req, res) => {
+	UserModel.find({ _id: req.params.UserID })
+		.then((user) => {
+			console.log(user[0].sugarLevel);
+			SugarLevelModel.find({
+				_id: { $in: user[0].sugarLevel }
+			}).then((obj) => {
+				return res.json(obj);
+			});
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+});
 
 module.exports = router;
