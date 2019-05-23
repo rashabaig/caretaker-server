@@ -1,6 +1,6 @@
 const mongoose = require('../../connection');
 const DailyNoteModel = new mongoose.Schema({
-	date: Date,
-	symptoms: [ String ]
+	date: String,
+	symptoms: String
 });
 module.exports = mongoose.model('DailyNote', DailyNoteModel);
