@@ -39,4 +39,20 @@ router.delete('/:dailyNoteID', (req, res) => {
 			console.log(err);
 		});
 });
+
+// To find all blood sugar -- works
+router.get('/:UserID', (req, res) => {
+	UserModel.find({ _id: req.params.UserID })
+		.then((user) => {
+			console.log(user[0].notes);
+			DailyNoteModel.find({
+				_id: { $in: user[0].notes }
+			}).then((obj) => {
+				return res.json(obj);
+			});
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+});
 module.exports = router;
