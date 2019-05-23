@@ -50,4 +50,18 @@ router.delete('/:medicationID', (req, res) => {
 		});
 });
 
+router.get('/all/:UserID', (req, res) => {
+	UserModel.find({ _id: req.params.UserID })
+		.then((user) => {
+			console.log(user[0].medications);
+			MedicationModel.find({
+				_id: { $in: user[0].medications }
+			}).then((obj) => {
+				return res.json(obj);
+			});
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+});
 module.exports = router;

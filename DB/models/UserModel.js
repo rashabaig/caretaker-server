@@ -3,7 +3,7 @@ const mongoose = require('../../connection');
 const UserModel = new mongoose.Schema({
 	userName: String,
 	password: String,
-	age: Number,
+	dateOfBirth: String,
 	firstName: String,
 	lastName: String,
 	emailAddress: String,
