@@ -9,7 +9,7 @@ This project was a collaboration between Rasha Baig and Tanya Radu, where each o
 CareTaker is an app designed to help users manage, monitor, and track their health. Functionality includes being able to add doctors, add medications, add doctors appointments, log metrics including blood sugar, blood pressure, and weight, and view data visualizations. 
 
 ## Division of Responsibilities
-
+See Planning Folder
 
 ## Technologies Used
 
