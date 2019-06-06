@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "caretaker-server",
   "version": "1.0.0",
   "description": "",
@@ -23,4 +24,31 @@
     "mongoose": "^5.5.9",
     "node": "^12.2.0"
   }
+=======
+	"name": "caretaker-server",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/rashabaig/caretaker-server.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/rashabaig/caretaker-server/issues"
+	},
+	"homepage": "https://github.com/rashabaig/caretaker-server#readme",
+	"dependencies": {
+		"axios": "^0.18.1",
+		"cors": "^2.8.5",
+		"express": "^4.17.0",
+		"mongoose": "^5.5.9",
+		"node": "^11.12.0"
+	}
+>>>>>>> master
 }
