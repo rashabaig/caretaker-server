@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/rashabaig/caretaker-server#readme",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "cors": "^2.8.5",
     "express": "^4.17.0",
     "mongoose": "^5.5.9",
